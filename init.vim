@@ -11,55 +11,35 @@ Plug 'mattn/emmet-vim' 			          "Emmet para diseño web
 "Status Bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'   "para poner icono a direcotiro
 
 " Arbol de Directorios
 Plug 'scrooloose/nerdtree'		        "Gestor de archivos en forma de arbol.
 
 "Tmux
-Plug 'yazgoo/vmux'
-Plug 'christoomey/vim-tmux-navigator'	"Poder navegar entre archivos abiertos
+Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al estar divididas
 
 "Autocomplementado
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"TERMINAL
-Plug 'erietz/vim-terminator', { 'branch': 'main'} "ejecutar codigo de lenguajes de programacion
-
 "IDE
 Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'  "buscar una palabra en nuestra pagina actual <leader>s +(letra)
 Plug 'Yggdroot/indentLine'              "indentacion
 Plug 'scrooloose/nerdcommenter' "comentarios
 Plug 'jiangmiao/auto-pairs'             "autocompletado de llaves, corchetes, etc
-Plug 'osyo-manga/vim-over' "OverCommandLine%s/ ENTER palabra/
 Plug 'tpope/vim-surround'  "Para envolver una palabra en un signo, corchete, parentesis
-"Para poder envolver una palabra /// ysiw + signo
-"Para cambiar de signo 'hello world' a un <p>hello world</p> /// digitamos cs'<q>
-"Para eliminar un delimitador digitamos ds' /// 'hello' -> hello
-"Para dar iconos a nuestros nvim
-"Para reemplazar alguna palabra,  :%s/palbra antigua/palabra nueva
-Plug 'tmhedberg/simpylfold' "plegado de codigo
-Plug 'vim-scripts/TaskList.vim'
-"todoshow para vim, todo,fixme en mayuscula
-"funciona con <leader> t  #salir q, mantener ventana y volver a pantalla e
 
 "Sintax
-Plug 'sheerun/vim-polyglot' "resalta de color los lenguajes de progra
 Plug 'lilydjwg/colorizer' "Color hexadecimal en css, pinta
-Plug 'KabbAmine/vCoolor.vim'   "insertar color, alt +c, atl + r; alt + v
-Plug 'valloric/matchtagalways' " Para sombrear etiquetas de inicio y de salida
-Plug 'sbdchd/neoformat'  "prettier javascript
-
-
-" Comentarios
-"Plug 'terrortylor/nvim-comment'       " Toggle Comentarios
 
 " Busqueda
 Plug 'junegunn/fzf.vim'  "busquedas de archivos, lines
 Plug 'junegunn/fzf'
-Plug 'voldikss/vim-floaterm' "TERMINAL
+
+
+" Vim Script
+Plug 'folke/persistence.nvim'
+
 
 call plug#end() 			"cerramos el llamado de los plugins
 
@@ -81,14 +61,15 @@ syntax on
 "Muestra los numeros de cada linea en la parte izquierda.
 set number
 
-
 " Habilite el menú de finalización automática después de presionar TAB. 
 set wildmenu
 
 " Permite la interacion con el mouse
-set mouse=a 				  
-"set noshowmode				    "Me deja de mostrar el modo en el que estamos 'normal, insert, visual, etc'
+set mouse=a
 
+
+" Me deja de mostrar el modo en el que estamos 'normal, insert, visual, etc'
+set noshowmode
 
 " El texto en una linea no baja a la siguiente, solo continua en la misma hasta el infinito.
 set wrap
@@ -108,11 +89,15 @@ set termguicolors
 " Activa tema onedark.
 colorscheme onedark
 
+" Tener un tiempo de actualización más largo (el valor predeterminado es 4000 ms = 4 s) conduce a una notable 
+" retrasos y mala experiencia de usuario
+set updatetime=300
+
+
 
 set noerrorbells
 set sw=2 sts=2
 set smartindent
-set rnu
 set nobackup
 set showmatch
 set incsearch
@@ -134,7 +119,7 @@ set splitbelow
 set splitright
 "Para pelgar codigo de lenguaje de programacion
 set foldmethod=syntax
-"set foldmethod=indent
+set foldmethod=indent
 set nofoldenable        "dont fold by default
 
 
@@ -147,21 +132,77 @@ map <C-f> :NERDTreeFind<CR>
 let mapleader=","
 
 " Escriba jj para salir rápidamente del modo de inserción.
-inoremap jj <Esc>
+inoremap ii <Esc>
 
+" Abrir la configuracion de NVim
+nnoremap <Leader>e :e ~/AppData/Local/nvim/init.vim<CR>
+
+" Guardar la sesion actual.
+nnoremap <Leader>ss :mksession! ~/AppData/Local/nvim/sessions/session.vim<CR>
+
+
+" Abrir la sesion guardada.
+nnoremap <Leader>so :source ~/AppData/Local/nvim/sessions/session.vim<CR>
 
 
 " Divide y duplica el archivo en otra ventana.
 " De forma Vertical
-nnoremap <Leader>vs :vsp<CR>
-" De forma Horizontaln
-noremap <Leader>sp :sp<CR>
+nnoremap <Leader>vv :vsp<CR>
+" De forma Horizontal
+noremap <Leader>vh :sp<CR>
 
-" Puede dividir una ventana en secciones escribiendo `:split` o `:vsplit`. 
-" Muestra la línea del cursor y la columna del cursor SOLAMENTE en la ventana activa.
+" Guardar el archivo
+nnoremap <Leader>w :w<CR>
 
-augroup cursor_off
-    autocmd!
-    autocmd WinLeave * set nocursorline nocursorcolumn
-    autocmd WinEnter * set cursorline cursorcolumn
-augroup END
+" Cerrar el archivo
+nnoremap <Leader>q :q<CR>
+
+" Cerrar el archivo descartando los cambios
+nnoremap <Leader>qq :q!<CR>
+
+" Ajustar el tamano de las ventanas
+nnoremap <C-right> :vertical resize +5<CR>
+nnoremap <C-left>  :vertical resize -5<CR>
+nnoremap <C-up>    :resize +5<CR>
+nnoremap <C-down>  :resize -5<CR>
+
+
+
+
+" Use el TAB para activar la finalización con los caracteres por delante y navegue 
+" NOTA: siempre hay un elemento completo seleccionado de forma predeterminada, es posible que desee habilitar 
+" no select by `"suggest.noselect": true` en su archivo de configuración 
+" NOTA: Use el comando ':verbose imap <tab>' para asegurarse de que la pestaña no esté asignada por 
+" otro complemento antes de poner esto en su configuración
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Atajo para formatear el codigo.
+vmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
+
+" Asignar el formateador de Prettier.
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+
+
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+
+" Emmet de forma Global
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,js EmmetInstall
+
+" Abrir el explorador de archivos
+nnoremap <silent> <F2> :CocCommand explorer<CR>
+
+
