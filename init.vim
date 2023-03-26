@@ -5,7 +5,6 @@ Plug 'joshdick/onedark.vim'
 
 "Status Bar
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'   "para poner icono a direcotiro
 
 " Arbol de Directorios
@@ -28,15 +27,10 @@ Plug 'tpope/vim-surround'  "Para envolver una palabra en un signo, corchete, par
 Plug 'lilydjwg/colorizer' "Color hexadecimal en css, pinta
 Plug 'sheerun/vim-polyglot' "Coloreado de los lenguajes. 
 
-"Busqueda
-Plug 'junegunn/fzf.vim'  "busquedas de archivos, lines
-Plug 'junegunn/fzf'
-
 "Bracket Pair Colorizer
 Plug 'luochen1990/rainbow'
 
-call plug#end() 			"cerramos el llamado de los plugins
-
+call plug#end() 			
 
 " Colores*********
 " Activa tema onedark.
@@ -86,8 +80,6 @@ set lazyredraw
 " Permite la interacion con el mouse
 set mouse=a
 
-" Acelerar el scrolling en NVim
-set ttyfast
 
 " El texto en una linea no baja a la siguiente, solo continua en la misma hasta el infinito.
 set wrap
@@ -170,15 +162,6 @@ inoremap ññ <Esc>
 nnoremap <Leader>e :e ~/AppData/Local/nvim/init.vim<CR>
 
 
-" Variable para obtener el nombre de la carpeta del proyecto en ejecucion.
-let dir="~/AppData/Local/nvim/sessions/"..split(getcwd(),"\\")[-1]..".vim"
-
-"Guardar la sesion actual.
-execute 'nnoremap <Leader>ss :mksession!'. dir.'<CR>'
-
-" Abrir la sesion guardada.
-execute 'nnoremap <Leader>so :source'..dir..'<CR>'
-
 " Divide y duplica el archivo en otra ventana.
 " De forma Vertical
 nnoremap <Leader>vv :vsp<CR>
@@ -196,8 +179,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>qq :q!<CR>
 
 " Mostrar los archivos arbiertos. 
-nnoremap <Leader>kp :Buffers<CR>
-"nnoremap <Leader>kp :b 
+nnoremap <Leader>kp :b 
 
 
 " Cerrar el archivos actual.
@@ -256,6 +238,19 @@ endfunction
 
 augroup user_cmds
     autocmd!
+    autocmd VimEnter * NERDTree
     autocmd VimEnter * call timer_start(2000, function('s:load_session_project'))
     autocmd VimEnter * call timer_start(30000, function('s:save_session_project'),{ 'repeat': -1 })
 augroup END
+
+"CocInstall Plugins
+"
+"coc-eslint
+"
+"coc-html
+"
+"coc-phpls
+"
+"coc-prettier
+"
+"coc-tsserver
