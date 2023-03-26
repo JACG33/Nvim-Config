@@ -9,7 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'   "para poner icono a direcotiro
 
 " Arbol de Directorios
-Plug 'scrooloose/nerdtree'		        "Gestor de archivos en forma de arbol.
+Plug 'preservim/nerdtree'
 
 "Tmux
 Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al estar divididas
@@ -26,10 +26,14 @@ Plug 'tpope/vim-surround'  "Para envolver una palabra en un signo, corchete, par
 
 "Sintax
 Plug 'lilydjwg/colorizer' "Color hexadecimal en css, pinta
+Plug 'sheerun/vim-polyglot' "Coloreado de los lenguajes. 
 
-" Busqueda
+"Busqueda
 Plug 'junegunn/fzf.vim'  "busquedas de archivos, lines
 Plug 'junegunn/fzf'
+
+"Bracket Pair Colorizer
+Plug 'luochen1990/rainbow'
 
 call plug#end() 			"cerramos el llamado de los plugins
 
@@ -38,6 +42,8 @@ call plug#end() 			"cerramos el llamado de los plugins
 " Activa tema onedark.
 colorscheme onedark
 
+"Establézcalo en 0 si desea habilitarlo más tarde a través de: RainbowToggle
+let g:rainbow_active = 1 
 
 " Activa el resaltado de syntaxis
 syntax on
@@ -56,6 +62,8 @@ set shiftwidth=2
 " Identado de lenguajes
 set smartindent
 
+" Las Tabulaciones son espacios.
+set expandtab
 
 " IU Configuraciones*********
 "Muestra los numeros de cada linea en la parte izquierda.
@@ -99,6 +107,8 @@ set showmatch
 " Controla cuándo/cómo mostrar la barra de estado.
 set laststatus=2
 
+" Cambiar la ubicacion del Arbol de Directorios.
+let g:NERDTreeWinPos = "right"
 
 " Búsqueda*********
 " Búsqueda incremental que muestra coincidencias parciales.
@@ -153,8 +163,8 @@ map <C-b> :NERDTreeToggle<CR>
 map <C-f> :NERDTreeFind<CR>
 
 
-" Escriba jj para salir rápidamente del modo de inserción.
-inoremap ii <Esc>
+" Escriba ññ para salir rápidamente del modo de inserción.
+inoremap ññ <Esc>
 
 " Abrir la configuracion de NVim.
 nnoremap <Leader>e :e ~/AppData/Local/nvim/init.vim<CR>
@@ -185,12 +195,13 @@ nnoremap <Leader>q :q<CR>
 " Cerrar todo descartando los cambios
 nnoremap <Leader>qq :q!<CR>
 
-" Mostrar los archivos arbiertos.
-nnoremap <Leader>kp :b 
+" Mostrar los archivos arbiertos. 
+nnoremap <Leader>kp :Buffers<CR>
+"nnoremap <Leader>kp :b 
 
 
 " Cerrar el archivos actual.
-nnoremap <leader>c :bd<CR>
+nnoremap <leader>xc :bd<CR>
 
 
 " Ajustar el tamano de las ventanas
@@ -205,15 +216,15 @@ nnoremap <C-down>  :resize -5<CR>
 " no select by `"suggest.noselect": true` en su archivo de configuración 
 " NOTA: Use el comando ':verbose imap <tab>' para asegurarse de que la pestaña no esté asignada por 
 " otro complemento antes de poner esto en su configuración
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"      \ coc#pum#visible() ? coc#pum#next(1) :
+"      \ CheckBackspace() ? "\<Tab>" :
+"      \ coc#refresh()
 "inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Atajo para formatear el codigo.
-vmap <leader>af  <Plug>(coc-format)
-nmap <leader>af  <Plug>(coc-format)
+vmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
 
 
 " GoTo code navigation
@@ -224,6 +235,27 @@ nmap <silent> gr <Plug>(coc-references)
 
 
 " Emmet de forma Global
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,js EmmetInstall
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css,js EmmetInstall
 
+
+" Funciones para guardar el projecto actual.
+function! s:load_session_project(t) abort
+    let dir="~/AppData/Local/nvim/sessions/"..split(getcwd(),"\\")[-1]..".vim"
+    execute ':source'..dir
+    echom "loadSession"
+endfunction
+
+
+function! s:save_session_project(t) abort
+    let dir="~/AppData/Local/nvim/sessions/"..split(getcwd(),"\\")[-1]..".vim"
+    execute ':mksession!'..dir
+    echom "saveSession"
+endfunction
+
+
+augroup user_cmds
+    autocmd!
+    autocmd VimEnter * call timer_start(2000, function('s:load_session_project'))
+    autocmd VimEnter * call timer_start(30000, function('s:save_session_project'),{ 'repeat': -1 })
+augroup END
