@@ -102,6 +102,7 @@ set laststatus=2
 " Cambiar la ubicacion del Arbol de Directorios.
 let g:NERDTreeWinPos = "right"
 
+
 " Búsqueda*********
 " Búsqueda incremental que muestra coincidencias parciales.
 set incsearch
@@ -118,7 +119,7 @@ set hlsearch
 
 " Plegado*********
 " Plegado basado en niveles de sangría.
-set foldmethod=indent
+set foldmethod=manual
 
 " Deshabilita el plegado de forma predeterminada.
 set nofoldenable
@@ -181,6 +182,8 @@ nnoremap <Leader>qq :q!<CR>
 " Mostrar los archivos arbiertos. 
 nnoremap <Leader>kp :b 
 
+" GUarda todos los archivos abierto
+nnoremap <Leader>sa :wa<CR>
 
 " Cerrar el archivos actual.
 nnoremap <leader>xc :bd<CR>
@@ -217,7 +220,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 
 " Emmet de forma Global
-"let g:user_emmet_install_global = 0
+let g:user_emmet_install_global = 0
 "autocmd FileType html,css,js EmmetInstall
 
 
@@ -238,12 +241,15 @@ endfunction
 
 augroup user_cmds
     autocmd!
-    autocmd VimEnter * NERDTree
     autocmd VimEnter * call timer_start(2000, function('s:load_session_project'))
     autocmd VimEnter * call timer_start(30000, function('s:save_session_project'),{ 'repeat': -1 })
 augroup END
 
 "CocInstall Plugins
+"
+"coc-css
+"
+"coc-emmet
 "
 "coc-eslint
 "
