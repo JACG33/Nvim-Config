@@ -7,8 +7,6 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'   "para poner icono a direcotiro
 
-" Arbol de Directorios
-Plug 'preservim/nerdtree'
 
 "Tmux
 Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al estar divididas
@@ -69,6 +67,18 @@ set wildmenu
 " Mostrar comando en la barra inferior.
 set showcmd
 
+" https://shapeshed.com/vim-netrw/
+" https://vonheikemen.github.io/devlog/es/tools/using-netrw-vim-builtin-file-explorer/
+" Vista en formato de arbol.
+let g:netrw_liststyle = 3
+
+" Abrir en ventana anterior.
+let g:netrw_browse_split = 4
+
+" Establecer el ancho del explorador de directorios.
+let g:netrw_winsize = 25
+
+
 " Habilite la detección de tipo de archivo. Vim podrá intentar detectar el tipo de archivo en uso.
 " Habilite los complementos y cargue el complemento para el tipo de archivo detectado.
 " Cargue un archivo de sangría para el tipo de archivo detectado.
@@ -87,9 +97,6 @@ set wrap
 " Mostrar siempre la posición del cursor.
 set ruler
 
-" Activa true colors en la terminal.
-set termguicolors
-
 " Establece el título de la ventana, reflejando el archivo que se está editando actualmente.
 set title
 
@@ -98,9 +105,6 @@ set showmatch
 
 " Controla cuándo/cómo mostrar la barra de estado.
 set laststatus=2
-
-" Cambiar la ubicacion del Arbol de Directorios.
-let g:NERDTreeWinPos = "right"
 
 
 " Búsqueda*********
@@ -124,7 +128,7 @@ set foldmethod=manual
 " Deshabilita el plegado de forma predeterminada.
 set nofoldenable
 
-"Para pelgar codigo de lenguaje de programacion
+" Hacer que la nueva ventana aparezca a la derecha.
 set splitright
 
 " Para evitar el mensaje que sale al abrir algunos archivos sobre swap.
@@ -146,11 +150,7 @@ set nobackup
 let mapleader=","
 
 " Abrir/cerrar el explorador de archivos
-map <C-b> :NERDTreeToggle<CR>
-
-" Ubircar el archivo arbierto
-map <C-f> :NERDTreeFind<CR>
-
+map <C-b> :Lexplore!<CR>
 
 " Escriba ññ para salir rápidamente del modo de inserción.
 inoremap ññ <Esc>
@@ -222,7 +222,6 @@ function! s:save_session_project(t) abort
     execute ':mksession!'..dir
     echom "saveSession"
 endfunction
-
 
 augroup user_cmds
     autocmd!
