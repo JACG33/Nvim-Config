@@ -1,7 +1,7 @@
 call plug#begin('~/AppData/Local/nvim/plugins') 	"directorio donde se van a instalar los plugins
 
 " Themes
-Plug 'joshdick/onedark.vim'
+Plug 'tomasiser/vim-code-dark'
 
 "Status Bar
 Plug 'vim-airline/vim-airline'
@@ -34,7 +34,7 @@ call plug#end()
 
 " Colores*********
 " Activa tema onedark.
-colorscheme onedark
+colorscheme codedark
 
 "Establézcalo en 0 si desea habilitarlo más tarde a través de: RainbowToggle
 let g:rainbow_active = 1 
@@ -142,10 +142,6 @@ set updatetime=150
 set nobackup
 
 
-
-"cuando hagamos split se acomode abajo o arriba
-set splitbelow
-
 " Tecla lider para la ejecucion de comandos o atajos.
 let mapleader=","
 
@@ -195,17 +191,6 @@ nnoremap <C-left>  :vertical resize -5<CR>
 nnoremap <C-up>    :resize +5<CR>
 nnoremap <C-down>  :resize -5<CR>
 
-
-" Use el TAB para activar la finalización con los caracteres por delante y navegue 
-" NOTA: siempre hay un elemento completo seleccionado de forma predeterminada, es posible que desee habilitar 
-" no select by `"suggest.noselect": true` en su archivo de configuración 
-" NOTA: Use el comando ':verbose imap <tab>' para asegurarse de que la pestaña no esté asignada por 
-" otro complemento antes de poner esto en su configuración
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1) :
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Atajo para formatear el codigo.
 vmap <leader>f  <Plug>(coc-format)
