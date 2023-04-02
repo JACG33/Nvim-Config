@@ -14,8 +14,8 @@ Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al esta
 "Autocomplementado
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
 "IDE
-Plug 'terryma/vim-multiple-cursors'
 Plug 'Yggdroot/indentLine'              "indentacion
 Plug 'scrooloose/nerdcommenter' "comentarios
 Plug 'jiangmiao/auto-pairs'             "autocompletado de llaves, corchetes, etc
@@ -30,7 +30,7 @@ Plug 'luochen1990/rainbow'
 
 call plug#end() 			
 
-" Colores*********
+" *********Colores*********
 " Activa tema onedark.
 colorscheme codedark
 
@@ -41,7 +41,7 @@ let g:rainbow_active = 1
 syntax on
 
 
-"Espacios y Tabulaciones*********
+" *********Espacios y Tabulaciones*********
 " Espacios de la sangría.
 set tabstop=2
 
@@ -57,15 +57,20 @@ set smartindent
 " Las Tabulaciones son espacios.
 set expandtab
 
-" IU Configuraciones*********
+" ********* IU Configuraciones*********
 "Muestra los numeros de cada linea en la parte izquierda.
 set number
 
 " Habilite el menú de finalización automática después de presionar TAB. 
 set wildmenu
 
+set wildoptions=pum
 " Mostrar comando en la barra inferior.
 set showcmd
+
+
+" 
+set hidden
 
 " https://shapeshed.com/vim-netrw/
 " https://vonheikemen.github.io/devlog/es/tools/using-netrw-vim-builtin-file-explorer/
@@ -107,7 +112,7 @@ set showmatch
 set laststatus=2
 
 
-" Búsqueda*********
+" *********Búsqueda*********
 " Búsqueda incremental que muestra coincidencias parciales.
 set incsearch
 
@@ -121,7 +126,7 @@ set smartcase
 set hlsearch
 
 
-" Plegado*********
+" *******Plegado*********
 " Plegado basado en niveles de sangría.
 set foldmethod=manual
 
@@ -179,7 +184,7 @@ nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>kp :b 
 
 " GUarda todos los archivos abierto
-nnoremap <Leader>sa :wa<CR>
+nnoremap <Leader>ks :wa<CR>
 
 " Cerrar el archivos actual.
 nnoremap <leader>xc :bd<CR>
