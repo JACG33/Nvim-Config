@@ -1,17 +1,12 @@
-so ~/AppData/Local/nvim/nvim_functions/functions.vim
 so ~/AppData/Local/nvim/nvim_configs/plugins_conf.vim
 so ~/AppData/Local/nvim/nvim_configs/maps_conf.vim
+so ~/AppData/Local/nvim/nvim_functions/functions.vim
 so ~/AppData/Local/nvim/nvim_configs/coc_conf.vim
-
 
 " *********Colores*********
 
 " Activa el resaltado de syntaxis
 syntax on
-
-"Establézcalo en 0 si desea habilitarlo más tarde a través de: RainbowToggle
-let g:rainbow_active = 1 
-
 
 " *********Espacios y Tabulaciones*********
 " Espacios de la sangría.
@@ -42,6 +37,11 @@ set showcmd
 " 
 set hidden
 
+" Identacion
+let g:indent_blankline_char = '▏'
+let g:show_trailing_blankline_indent="false"
+
+
 if (has("termguicolors"))
     set termguicolors 	" Enables 24-bit RGB color in the terminal if its available
 endif
@@ -52,7 +52,7 @@ endif
 let g:netrw_liststyle = 3
 
 " Abrir en ventana anterior.
-let g:netrw_browse_split = 4
+"let g:netrw_browse_split = 4
 
 " Establecer el ancho del explorador de directorios.
 let g:netrw_winsize = 25
@@ -64,7 +64,7 @@ let g:netrw_winsize = 25
 filetype plugin indent on
 
 " Redibujar solo cuando sea necesario.
-set lazyredraw 
+"set lazyredraw 
 
 " Permite la interacion con el mouse
 set mouse=a
@@ -120,9 +120,9 @@ set clipboard=unnamedplus
 
 " Tener un tiempo de actualización más largo (el valor predeterminado es 4000 ms = 4 s) conduce a una notable 
 " retrasos y mala experiencia de usuario
-set updatetime=150
+set updatetime=200
 
 " No realizar copias de seguridad.
 set nobackup
-
+set nowritebackup
 
