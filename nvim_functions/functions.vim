@@ -1,9 +1,9 @@
 " Funciones para cargar el projecto actual.
 function! s:load_session_project(t) abort
     let dir="~/AppData/Local/nvim/sessions/"..split(getcwd(),"\\")[-1]..".vim"
-    if(dir)
-      execute ':source'..dir
-      echom "loadSession"
+    if !empty(glob(dir))
+     execute ':source'..dir
+     echom "loadSession"
     endif
 endfunction
 
