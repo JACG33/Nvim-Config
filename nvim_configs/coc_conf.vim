@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-css', 'coc-emmet', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-css', 'coc-eslint', 'coc-html', 'coc-phpls', 'coc-prettier', 'coc-tsserver']
 
 " ******** Maps
 

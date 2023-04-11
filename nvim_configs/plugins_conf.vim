@@ -5,8 +5,6 @@ Plug 'tomasiser/vim-code-dark'
 
 "Status Bar
 Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'   "para poner icono a direcotiro
-
 
 "Tmux
 Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al estar divididas
@@ -14,18 +12,18 @@ Plug 'christoomey/vim-tmux-navigator'	" Poder navegar entre las ventanas al esta
 "Autocomplementado
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
 "IDE
-Plug 'Yggdroot/indentLine'              "indentacion
-Plug 'scrooloose/nerdcommenter' "comentarios
-Plug 'jiangmiao/auto-pairs'             "autocompletado de llaves, corchetes, etc
-Plug 'tpope/vim-surround'  "Para envolver una palabra en un signo, corchete, parentesis
+"Comentarios
+Plug 'scrooloose/nerdcommenter'
+"Autocompletado de llaves, corchetes, etc
+Plug 'jiangmiao/auto-pairs'
+"Para envolver una palabra en un signo, corchete, parentesis
+Plug 'tpope/vim-surround'
+"Indentacion
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 "Sintax
 Plug 'lilydjwg/colorizer' "Color hexadecimal en css, pinta
 Plug 'sheerun/vim-polyglot' "Coloreado de los lenguajes. 
-
-"Bracket Pair Colorizer
-Plug 'luochen1990/rainbow'
 
 call plug#end() 
