@@ -1,0 +1,7 @@
+{
+  "emmet.includeLanguages": {
+    "handelbars-html": "html",
+    "javascript": "html"
+  },
+  "snippets.ultisnips.pythonPrompt": false
+}
