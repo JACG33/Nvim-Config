@@ -36,6 +36,9 @@ return {
      -- Coc
     {'neoclide/coc.nvim', branch = 'release'},
 
+    --Mutiple cursors
+    {'mg979/vim-visual-multi', branch= 'master'},
+
     -- Telescope
     {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',

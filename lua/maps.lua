@@ -38,7 +38,9 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
-vim.keymap.set('n', '<leader>kp', builtin.buffers, {})
+vim.keymap.set('n', '<C-k><C-p>', builtin.buffers, {})
+
+vim.keymap.set('i', '<C-k><C-p>', builtin.buffers, {})
 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
