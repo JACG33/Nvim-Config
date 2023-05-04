@@ -10,8 +10,8 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 
 -- Plegado basado en Tree-sitter. (Técnicamente no es un módulo porque es por ventana y no por búfer).
-vim.o.foldmethod='expr'
-vim.o.foldexpr='nvim_treesitter#foldexpr()'
+--vim.o.foldmethod='expr'
+--vim.o.foldexpr='nvim_treesitter#foldexpr()'
 -- vim.o.nofoldenable
 
 vim.o.smartident = true
@@ -77,3 +77,6 @@ vim.o.updatetime = 200
 
 vim.o.hidden = true
 
+vim.opt.swapfile = false
+
+vim.opt.backup = false

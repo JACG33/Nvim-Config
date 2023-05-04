@@ -14,11 +14,9 @@ vim.keymap.set('n','<Leader>q',':q<CR>')
 
 vim.keymap.set('n','<Leader>qq',':q!<CR>')
 
-vim.keymap.set('n','<Leader>s',':wa<CR>')
+vim.keymap.set('n','<C-k><C-s>',':wa<CR>')
 
--- vim.keymap.set('n','<Leader>kp',':b ')
-
-vim.keymap.set('n','<Leader>xc',':bd<CR>')
+vim.keymap.set('n','<C-w>',':bd!<CR>')
 
 vim.keymap.set('n','<C-l>',':vertical resize +5<CR>')
 
