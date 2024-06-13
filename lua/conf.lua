@@ -14,7 +14,7 @@ vim.o.shiftwidth = 2
 --vim.o.foldexpr='nvim_treesitter#foldexpr()'
 -- vim.o.nofoldenable
 
-vim.o.smartident = true
+vim.o.smartindent = true
 
 vim.o.expandtab = true
 

@@ -13,7 +13,7 @@ return {
     {'christoomey/vim-tmux-navigator'},
 
     -- IdentLine
-    {'lukas-reineke/indent-blankline.nvim'},
+    {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},
 
     -- Comments
     {'scrooloose/nerdcommenter'},
@@ -31,7 +31,9 @@ return {
     {'nvim-treesitter/nvim-treesitter',build = ":TSUpdate"},
 
     -- Rainbow2
-    {'HiPhish/nvim-ts-rainbow2'},
+    -- Deprecated 
+    --{'HiPhish/nvim-ts-rainbow2'},
+    {'HiPhish/rainbow-delimiters.nvim'},
 
      -- Coc
     {'neoclide/coc.nvim', branch = 'release'},
@@ -41,7 +43,7 @@ return {
 
     -- Telescope
     {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
       dependencies = { 'nvim-lua/plenary.nvim' }
     }
 }
