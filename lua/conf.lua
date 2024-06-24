@@ -26,6 +26,8 @@ vim.o.showcmd = true
 
 vim.o.termguicolors = true
 
+vim.g.have_nerd_font = tre
+
 vim.o.background = 'dark'
 
 vim.cmd.colorscheme('codedark')
