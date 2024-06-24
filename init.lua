@@ -20,11 +20,5 @@ vim.g.mapleader = ','
 
 require("lazy").setup('plugins', opts)
 
---require('treesitter')
 require('conf')
---require('coc')
 require('maps')
---require('ident-blankline')
---require('gitsigns')
---require('lsp')
---require('nvim-cmp')
