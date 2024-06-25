@@ -2,7 +2,9 @@
 
 vim.keymap.set('i','ññ','<ESC>')
 
-vim.keymap.set('n','<C-b>',':Explore<CR>')
+--vim.keymap.set('n','<C-b>',':Explore<CR>')
+vim.keymap.set('n','<C-b>',':NvimTreeToggle<CR>')
+vim.keymap.set('i','<C-b>',':NvimTreeToggle<CR>')
 
 vim.keymap.set('n','<Leader>vh',':sp<CR>')
 

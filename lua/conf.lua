@@ -26,11 +26,19 @@ vim.o.showcmd = true
 
 vim.o.termguicolors = true
 
-vim.g.have_nerd_font = tre
+vim.g.have_nerd_font = true
 
 vim.o.background = 'dark'
 
 vim.cmd.colorscheme('codedark')
+
+-- nvim-tree config
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 
 -- https://shapeshed.com/vim-netrw/
 -- https://vonheikemen.github.io/devlog/es/tools/using-netrw-vim-builtin-file-explorer/
